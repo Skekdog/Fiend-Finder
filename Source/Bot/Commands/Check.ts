@@ -1,4 +1,4 @@
-import { MessageFlags, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
+import { AttachmentBuilder, MessageFlags, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
 import identifyDiscordAccountsFromFriendList from "../../Detection/Detection";
 import type { CommandInterface } from "../Types/CommandInterface";
 
@@ -38,13 +38,17 @@ const CheckCommand: CommandInterface = {
 			return;
 		}
 
-		let output = "```";
+		let output = "Results:";
 		for (const account of accounts) {
 			output += `\n?ban ${account.id} Inside ${account.serverCount} Condo Servers, Roblox IDs: ${account.robloxAccounts.join(", ")}`;
 		}
-		output += "```";
 
-		await interaction.editReply(output);
+		const file = new AttachmentBuilder(Buffer.from(output)).setName("Results.txt");
+
+		await interaction.editReply({
+			content: "Found flagged accounts:",
+			files: [file],
+		});
 	},
 };
 
