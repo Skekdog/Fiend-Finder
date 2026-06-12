@@ -3,7 +3,7 @@ import { sleep } from "bun";
 const ROTECTOR_BASE_URL = "https://roscoe.rotector.com";
 const ROBLOX_FRIENDS_BASE_URL = "https://friends.roblox.com";
 
-const SLEEP_DURATION_MS = 500;
+const SLEEP_DURATION_MS = 750;
 // I couldn't find documentation on the rate limits, but 500ms seemed to work fine.
 // Any lower than 500ms would cause rate limits to be tripped on large friends lists.
 // n.b. I'm not actually aware of any docs existing, not just on the rate limits.
